@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website - Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #f4f4f4;
+            padding: 15px 30px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 40px 30px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-card strong {
+            color: #667eea;
+        }
+
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .code-block code {
+            display: block;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .tech-item {
+            background: #e8eaf6;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .tech-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .checklist {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+
+        .checklist label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .troubleshooting-item {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .troubleshooting-item strong {
+            color: #ff6b6b;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .troubleshooting-item em {
+            display: block;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        footer {
+            background: #f4f4f4;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #667eea;
+            color: #666;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .emoji {
+            margin-right: 8px;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #764ba2;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 Personal Portfolio Website</h1>
+            <p>Complete Documentation & Setup Guide</p>
+        </header>
+
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#features">Features</a>
+            <a href="#tech">Tech Stack</a>
+            <a href="#setup">Setup</a>
+            <a href="#structure">Structure</a>
+            <a href="#deployment">Deployment</a>
+            <a href="#troubleshooting">Troubleshooting</a>
+        </nav>
+
+        <main>
+            <!-- Overview Section -->
+            <section id="overview">
+                <h2><span class="emoji">🎯</span>Project Overview</h2>
+                
+                <p>The <span class="highlight">Personal Portfolio Website</span> is a modern, responsive web application designed to showcase your professional work, skills, and achievements. It serves as a digital resume and project showcase for potential employers, clients, and collaborators.</p>
+
+                <h3>Purpose</h3>
+                <ul>
+                    <li>Display your professional work and projects</li>
+                    <li>Highlight your skills and expertise</li>
+                    <li>Provide contact information and social links</li>
+                    <li>Establish your online presence</li>
+                    <li>Attract job opportunities or clients</li>
+                </ul>
+
+                <h3>Target Audience</h3>
+                <ul>
+                    <li>Recruiters and hiring managers</li>
+                    <li>Potential clients</li>
+                    <li>Collaborators and team members</li>
+                    <li>Networking contacts</li>
+                </ul>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features">
+                <h2><span class="emoji">✨</span>Core Features</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <strong>📱 Responsive Design</strong>
+                        <p>Works seamlessly on desktop, tablet, and mobile devices</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🎨 Project Showcase</strong>
+                        <p>Display your best work with descriptions and links</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>💼 Skills Section</strong>
+                        <p>Highlight technical and professional skills</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>📧 Contact Form</strong>
+                        <p>Easy-to-use contact mechanism for visitors</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🔗 Social Links</strong>
+                        <p>Connect with profiles on LinkedIn, GitHub, Twitter, etc.</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🎭 Animations</strong>
+                        <p>Professional transitions and smooth effects</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🌙 Dark Mode</strong>
+                        <p>Optional dark theme for better user experience</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🔍 SEO Optimized</strong>
+                        <p>Better search engine visibility and ranking</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>⚡ Fast Loading</strong>
+                        <p>Optimized performance for quick page loads</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Stack Section -->
+            <section id="tech">
+                <h2><span class="emoji">🛠️</span>Technology Stack</h2>
+
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <strong>Frontend</strong>
+                        <p>HTML5, CSS3, JavaScript ES6+</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Frameworks (Optional)</strong>
+                        <p>React.js, Vue.js, Angular</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Backend (Optional)</strong>
+                        <p>Node.js, Express.js</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Database (Optional)</strong>
+                        <p>MongoDB, PostgreSQL</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Version Control</strong>
+                        <p>Git, GitHub</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Deployment</strong>
+                        <p>Netlify, Vercel, GitHub Pages</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Setup Section -->
+            <section id="setup">
+                <h2><span class="emoji">🚀</span>Setup Instructions</h2>
+
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li><strong>Git</strong> - https://git-scm.com/</li>
+                    <li><strong>Node.js</strong> (v14 or higher) - https://nodejs.org/</li>
+                    <li><strong>npm</strong> - Comes with Node.js</li>
+                    <li><strong>Code Editor</strong> - VS Code recommended</li>
+                </ul>
+
+                <h3>Step 1: Clone Repository</h3>
+                <div class="code-block"><code>git clone https://github.com/yourusername/portfolio.git
+cd portfolio</code></div>
+
+                <h3>Step 2: Install Dependencies</h3>
+                <div class="code-block"><code>npm install</code></div>
+
+                <h3>Step 3: Environment Setup</h3>
+                <p>Create a <code>.env</code> file in root directory:</p>
+                <div class="code-block"><code>REACT_APP_EMAILJS_SERVICE_ID=your_service_id
+REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
+REACT_APP_EMAILJS_USER_ID=your_user_id</code></div>
+
+                <h3>Step 4: Run Locally</h3>
+                <div class="code-block"><code>npm start</code></div>
+                <p>Opens http://localhost:3000 automatically</p>
+
+                <h3>Step 5: Build for Production</h3>
+                <div class="code-block"><code>npm run build</code></div>
+
+                <div class="success">
+                    <strong>✓ Success!</strong> Your portfolio is now running locally. Make changes to see them in real-time.
+                </div>
+            </section>
+
+            <!-- Project Structure -->
+            <section id="structure">
+                <h2><span class="emoji">📁</span>Project Structure</h2>
+
+                <div class="code-block"><code>portfolio/
+├── index.html
+├── css/
+│   ├── style.css
+│   ├── responsive.css
+│   └── animations.css
+├── js/
+│   ├── script.js
+│   ├── contact-form.js
+│   └── animations.js
+├── images/
+│   ├── profile.jpg
+│   ├── projects/
+│   └── icons/
+├── assets/
+│   ├── resume.pdf
+│   └── documents/
+├── .gitignore
+├── README.md
+└── package.json</code></div>
+
+                <h3>File Descriptions</h3>
+                <table>
+                    <tr>
+                        <th>File/Folder</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td><strong>index.html</strong></td>
+                        <td>Main HTML file - entry point</td>
+                    </tr>
+                    <tr>
+                        <td><strong>css/</strong></td>
+                        <td>All stylesheets and design files</td>
+                    </tr>
+                    <tr>
+                        <td><strong>js/</strong></td>
+                        <td>JavaScript functionality and logic</td>
+                    </tr>
+                    <tr>
+                        <td><strong>images/</strong></td>
+                        <td>All images, icons, and media</td>
+                    </tr>
+                    <tr>
+                        <td><strong>assets/</strong></td>
+                        <td>Resume, documents, and other files</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Deployment Section -->
+            <section id="deployment">
+                <h2><span class="emoji">🌐</span>Deployment Guide</h2>
+
+                <h3>Option 1: Netlify (Recommended)</h3>
+                <ol>
+                    <li>Push your repository to GitHub</li>
+                    <li>Visit https://netlify.com</li>
+                    <li>Click "New site from Git"</li>
+                    <li>Select your repository</li>
+                    <li>Build command: <code>npm run build</code></li>
+                    <li>Publish directory: <code>build</code></li>
+                    <li>Click "Deploy"</li>
+                </ol>
+
+                <h3>Option 2: Vercel</h3>
+                <ol>
+                    <li>Go to https://vercel.com</li>
+                    <li>Import your GitHub repository</li>
+                    <li>Click "Deploy"</li>
+                    <li>Your site will be live instantly</li>
+                </ol>
+
+                <h3>Option 3: GitHub Pages</h3>
+                <div class="code-block"><code>npm install --save-dev gh-pages
+
+# Add to package.json:
+# "homepage": "https://yourusername.github.io/portfolio"
+# "deploy": "npm run build && gh-pages -d build"
+
+npm run deploy</code></div>
+
+                <div class="success">
+                    <strong>✓ Go Live!</strong> Your portfolio is now accessible online. Share your URL with recruiters and clients!
+                </div>
+            </section>
+
+            <!-- Troubleshooting Section -->
+            <section id="troubleshooting">
+                <h2><span class="emoji">🐛</span>Troubleshooting</h2>
+
+                <div class="troubleshooting-item">
+                    <strong>Issue: Website not loading</strong>
+                    <em>Solution:</em>
+                    <p>✓ Check if all file paths are correct
+✓ Ensure CSS and JS files are in the correct directories
+✓ Open browser console (F12) to check for errors</p>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <strong>Issue: Contact form not working</strong>
+                    <em>Solution:</em>
+                    <p>✓ Verify EmailJS credentials in .env file
+✓ Check email service configuration
+✓ Test with console.log statements</p>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <strong>Issue: Images not displaying</strong>
+                    <em>Solution:</em>
+                    <p>✓ Verify image paths are relative or absolute URLs
+✓ Ensure image files exist in the images folder
+✓ Check file permissions</p>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <strong>Issue: Responsive design not working</strong>
+                    <em>Solution:</em>
+                    <p>✓ Add viewport meta tag: &lt;meta name="viewport"&gt;
+✓ Check CSS media queries
+✓ Test in browser DevTools (F12)</p>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <strong>Issue: Slow loading on mobile</strong>
+                    <em>Solution:</em>
+                    <p>✓ Compress images using TinyPNG
+✓ Minimize CSS and JavaScript files
+✓ Use lazy loading for images
+✓ Enable caching in deployment settings</p>
+                </div>
+            </section>
+
+            <!-- Checklist -->
+            <section>
+                <h2><span class="emoji">✅</span>Pre-Launch Checklist</h2>
+
+                <div class="checklist">
+                    <label><input type="checkbox"> All personal information updated</label>
+                    <label><input type="checkbox"> Projects showcase completed with descriptions</label>
+                    <label><input type="checkbox"> Contact form tested and working</label>
+                    <label><input type="checkbox"> Mobile responsiveness verified</label>
+                    <label><input type="checkbox"> All images optimized and loaded</label>
+                    <label><input type="checkbox"> Links tested (internal and external)</label>
+                    <label><input type="checkbox"> Meta descriptions added for SEO</label>
+                    <label><input type="checkbox"> Google Analytics integrated</label>
+                    <label><input type="checkbox"> Domain name configured (if custom domain)</label>
+                    <label><input type="checkbox"> SSL certificate enabled</label>
+                    <label><input type="checkbox"> Performance tested (Lighthouse score 90+)</label>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section>
+                <h2><span class="emoji">📚</span>Additional Resources</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a></li>
+                    <li><a href="https://css-tricks.com/" target="_blank">CSS Tricks</a></li>
+                    <li><a href="https://javascript.info/" target="_blank">JavaScript.info</a></li>
+                    <li><a href="https://www.w3.org/WAI/" target="_blank">Web Accessibility Guidelines</a></li>
+                    <li><a href="https://developers.google.com/search" target="_blank">SEO Best Practices</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Personal Portfolio Website Documentation</p>
+            <p>Last Updated: June 2026 | Version 1.0.0</p>
+            <p><a href="https://github.com" target="_blank">View on GitHub</a> | <a href="mailto:support@example.com">Contact Support</a></p>
+        </footer>
+    </div>
+
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
